@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Quiz - Login</title>
+    <style>
+        body {
+            background-image: url('front_1.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            height: 100vh;
+            font-family: sans-serif;
+            margin: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #login-container {
+            margin: 5px auto;
+            width: 300px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: burlywood;
+        }
+
+        #quiz-container {
+            margin: 20px auto;
+            width: 600px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: aqua;
+        }
+
+        #results {
+            margin-top: 20px;
+            text-align: center;
+            background-color: blueviolet;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #copyright {
+            margin-top: 20px;
+            text-align: center;
+            color: #333;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1><u><b>IPL QUIZ</b></u></h1>
+
+    <div id="login-container" style="display: block;">
+        <h1>Login</h1>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <button onclick="login()">Login</button>
+    </div>
+
+    <div id="quiz-container" style="display: none;">
+        <h1><u><b> BEST OF LUCK </b></u></h1>
+
+        <h2>Question 1</h2>
+        <p>In which year was the first ipl tournment held?</p>
+        <input type="radio" name="q1" value="a"> 2008<br>
+        <input type="radio" name="q1" value="b"> 2007<br>
+        <input type="radio" name="q1" value="c"> 2009<br>
+
+        <h2>Question 2</h2>
+        <p>which team won the second ipl tournament?</p>
+        <input type="radio" name="q2" value="a"> chennai super king<br>
+        <input type="radio" name="q2" value="b"> mumbai indian<br>
+        <input type="radio" name="q2" value="c"> deccan chargers<br>
+
+        <h2>Question 3</h2>
+        <p>Player to score highest individual score in ipl match?</p>
+        <input type="radio" name="q3" value="a"> virat kohli<br>
+        <input type="radio" name="q3" value="b"> chris gayle<br>
+        <input type="radio" name="q3" value="c"> Rohit sharma<br>
+
+        <h2>Question 4</h2>
+        <p>Which ipl team has won the most ipl trophy?</p>
+        <input type="radio" name="q4" value="a"> mumbai indian<br>
+        <input type="radio" name="q4" value="b"> chennai super king<br>
+        <input type="radio" name="q4" value="c"> royal challengers bangaluru<br>
+        <input type="radio" name="q4" value="d"> both a & b<br>
+
+
+        <h2>Question 5</h2>
+        <p>Who holds the record for most centuries in ipl match?</p>
+        <input type="radio" name="q5" value="a"> virat kohli<br>
+        <input type="radio" name="q5" value="b"> Sachin Tendulkar<br>
+        <input type="radio" name="q5" value="c"> chris gayle<br>
+
+        <h2>Question 6</h2>
+        <p>Who has the most wicket in ipl history?</p>
+        <input type="radio" name="q6" value="a"> yuzvendra chahal<br>
+        <input type="radio" name="q6" value="b">malinga <br>
+        <input type="radio" name="q6" value="c"> chawla<br>
+
+        <h2>Question 7</h2>
+        <p>Which team have lowest team total in ipl history?</p>
+        <input type="radio" name="q7" value="a"> RCB<br>
+        <input type="radio" name="q7" value="b"> PUNJAB<br>
+        <input type="radio" name="q7" value="c"> CSK<br>
+
+        <h2>Question 8</h2>
+        <p>Who has most hat-trick in ipl history?</p>
+        <input type="radio" name="q8" value="a"> jasprit bumrah<br>
+        <input type="radio" name="q8" value="b"> Amit sharma<br>
+        <input type="radio" name="q8" value="c"> chahal<br>
+
+        <h2>Question 9</h2>
+        <p>Which player had played most ipl matches for a single ipl team?</p>
+        <input type="radio" name="q9" value="a"> MS Dhoni<br>
+        <input type="radio" name="q9" value="b"> Rohit Sharma<br>
+        <input type="radio" name="q9" value="c"> Virat kohli<br>
+
+        <h2>Question 10</h2>
+        <p>Which team not yet won any ipl tournment?</p>
+        <input type="radio" name="q10" value="a"> punjab<br>
+        <input type="radio" name="q10" value="b"> RCB <br>
+        <input type="radio" name="q10" value="c"> gujrat<br>
+        <input type="radio" name="q10" value="d"> All of above<br>
+
+        <button onclick="checkAnswers()">Submit</button>
+    </div>
+
+    <div id="results"></div>
+
+    <div id="copyright">© 2025 Quiz 2025</div>
+
+    <script>
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username === "ipl" && password === "ipl") {
+                document.getElementById("login-container").style.display = "none";
+                document.getElementById("quiz-container").style.display = "block";
+            } else {
+                alert("Invalid username or password.");
+            }
+        }
+
+        function checkAnswers() {
+            let score = 0;
+
+            // Answer keys
+            const answers = {
+                q1: 'a',
+                q2: 'c',
+                q3: 'b',
+                q4: 'd',
+                q5: 'a',
+                q6: 'a',
+                q7: 'a',
+                q8: 'b',
+                q9: 'c',
+                q10: 'd'
+            };
+
+            for (let i = 1; i <= 10; i++) {
+                const question = `q${i}`;
+                const userAnswer = document.querySelector(`input[name="${question}"]:checked`);
+                if (userAnswer && userAnswer.value === answers[question]) {
+                    score++;
+                }
+            }
+
+            // Display results
+            document.getElementById('results').innerHTML = `
+                <h2>Congratulations!</h2>
+                <p>You scored <span style="color: yellow;">${score}</span> out of 10!</p>
+            `;
+        }
+    </script>
+</body>
+</html>
